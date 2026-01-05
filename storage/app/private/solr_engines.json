@@ -1,0 +1,20 @@
+{
+    "local": {
+        "host": "http://localhost",
+        "port": "8985",
+        "core": "biblio",
+        "auth": null
+    },
+    "codfaun": {
+        "host": "http://localhost",
+        "port": "8985",
+        "core": "codfaun",
+        "auth": null
+    },
+    "sig": {
+        "host": "http://172.22.185.3",
+        "port": "6080",
+        "core": "biblio",
+        "auth": null
+    }
+}
