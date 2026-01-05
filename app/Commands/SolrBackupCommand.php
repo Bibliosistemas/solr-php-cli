@@ -407,6 +407,11 @@ class SolrBackupCommand extends Command
                 $docs = $data['response']['docs'];
 
                 foreach ($docs as $doc) {
+                    // Remove _version_ field if exclude-version is enabled
+                    if ($this->option('exclude-version')) {
+                        unset($doc['_version_']);
+                    }
+                    
                     fwrite($fileHandle, '    <doc>' . "\n");
                     foreach ($doc as $key => $value) {
                         if (is_array($value)) {
