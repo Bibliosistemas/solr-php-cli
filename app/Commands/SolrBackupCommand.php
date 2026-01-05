@@ -12,11 +12,11 @@ class SolrBackupCommand extends Command
 {
     protected $signature = 'solr:backup 
         {engine? : The Solr engine to backup (default: local)} 
-        {--query=*:* : Filter query for selective backup} 
         {--format=json : Export format (json|csv|xml)} 
+        {--query=*:* : Filter query for selective backup} 
         {--output= : Custom output filename} 
         {--batch=1000 : Batch size for cursor pagination} 
-        {--compress : Compress output with gzip} 
+        {--compress=1 : Compress output with gzip} 
         {--exclude-version=1 : Exclude _version_ field from JSON}
         {--fields=* : Comma-separated field list (default: all except _version_)}';
 
@@ -136,7 +136,9 @@ class SolrBackupCommand extends Command
     {
         $format = strtolower($this->option('format'));
         $query = $this->option('query');
-        if(is_Array($query)) $query = array_first($query);
+        
+        if(\is_Array($query)) $query = array_first($query);
+        if ($query==':*' ) $query='*:*' ;   //avoid bug in recover default
         $batchSize = (int) $this->option('batch');
 
         $this->info("Starting backup in {$format} format...");

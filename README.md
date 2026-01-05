@@ -9,6 +9,7 @@ This repository provides CLI tools for interacting with SOLR servers:
 - `query` - Execute search queries against SOLR,  with table export
 - `index` - Index documents into SOLR collections (Todo!)
 - `delete` - Remove documents from SOLR (TODO!)
+- `backup` - Create backups of SOLR collections
 - `status` - Check SOLR server status and health
 - `config` - Manage SOLR configuration settings
 
@@ -58,6 +59,21 @@ SOLR PHP CLIENT is an open-source software licensed under the MIT license.
  *
  * Usage:
  *   php solr-cli solr:query {query} {--collection=default} {--export=table}
+ *
+ * @package App\Commands
+ */
+```
+```php
+/**
+ * SolrBackupCommand
+ *
+ * A console command for creating backups of SOLR collections.
+ *
+ * This command allows you to create backups of your SOLR collections to
+ * prevent data loss and enable disaster recovery.
+ *
+ * Usage:
+ *   php solr-cli solr:backup --query="category:books AND year:2023"
  *
  * @package App\Commands
  */
